@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# Functions
+#
+
+  # checks if a command exists
+  exists()
+  {
+    command -v "$1" >/dev/null 2>&1
+  }
+
+# Alias definitions:
+
+  #
+
+#alias eclipse='bash -i -c ~/Apps/eclipse/cpp-mars/eclipse/./eclipse'
+
+
+# Get the PS1 prompts:
+if [ -f ~/scripts/bashprompts ]; then
+    . ~/scripts/bashprompts
+fi
+
+# Display dhammapada quotes
+if exists display-dhammapada; then
+  DHAMMA="$(display-dhammapada)"
+  #echo -e "\n \e[94m \e[1m ${DHAMMA} \n\e[0m"
+  alias dhamma='echo -e "\n \e[94m \e[1m ${DHAMMA} \n\e[0m"'
+  dhamma
+else
+  echo "display-dhammapada missing, please install. \n
+          sudo apt-get install display-dhammapada"
+fi
